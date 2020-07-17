@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * Class for handling GET and POST requests from web routes and choose which controller to hit
+ *
+ * @author     Marko Ivković <markoivkovic16@gmail.com>
+ * @author     Živko Obradović <zozobradovic@gmail.com>
+ */
 class Router
 {
     protected $routes = [

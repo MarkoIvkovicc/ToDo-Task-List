@@ -4,7 +4,10 @@ namespace App\Db;
 
 use PDO;
 
-
+/**
+ * @author     Marko Ivković <markoivkovic16@gmail.com>
+ * @author     Živko Obradović <zozobradovic@gmail.com>
+ */
 class Connection
 {
     protected $dbserver = 'localhost';

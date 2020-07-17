@@ -5,6 +5,10 @@ namespace App;
 use App\Db\Connection;
 use App\Db\QueryBuilder;
 
+/**
+ * @author     Marko Ivković <markoivkovic16@gmail.com>
+ * @author     Živko Obradović <zozobradovic@gmail.com>
+ */
 class User
 {
     public $id;

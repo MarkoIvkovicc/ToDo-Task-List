@@ -4,6 +4,9 @@ namespace App\Policy;
 
 use App\User;
 
+/**
+ * @author     Živko Obradović <zozobradovic@gmail.com>
+ */
 class UserPolicy
 {
     public function isAdmin(User $user)

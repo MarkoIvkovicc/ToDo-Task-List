@@ -5,6 +5,10 @@ namespace App;
 use App\Db\QueryBuilder;
 use App\Db\Connection;
 
+/**
+ * @author     Marko Ivković <markoivkovic16@gmail.com>
+ * @author     Živko Obradović <zozobradovic@gmail.com>
+ */
 class Task
 {
     public $id;

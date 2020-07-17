@@ -6,6 +6,10 @@ use App\User;
 use App\Db\Connection;
 use PDO;
 
+/**
+ * @author     Marko Ivković <markoivkovic16@gmail.com>
+ * @author     Živko Obradović <zozobradovic@gmail.com>
+ */
 class QueryBuilder
 {
     protected $connection;
