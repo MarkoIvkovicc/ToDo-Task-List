@@ -81,7 +81,9 @@ class QueryBuilder
 
     public function getUser($userId)
     {
-        $query = "SELECT * FROM users where users.id = {$userId}";
+        $query = sprintf(
+                "SELECT * FROM users where users.id = '%s'",
+                $userId);
         if ($stmt = $this->connection->query($query)) {
             return $stmt->fetchAll();
         }
@@ -106,7 +108,9 @@ class QueryBuilder
 
     public function getTask($taskId)
     {
-        $query = "SELECT * FROM tasks where tasks.id = {$taskId}";
+        $query = sprintf(
+            "SELECT * FROM tasks where tasks.id = '%s'",
+            $taskId);
         if ($stmt = $this->connection->query($query)) {
             return $stmt->fetchAll();
         }
@@ -144,7 +148,6 @@ class QueryBuilder
 
     public function updateTask($taskData)
     {
-        /* dump($taskData); */
         $sql = sprintf(
             "UPDATE tasks SET user_id = '%s', title = '%s', description = '%s', completed = '%s', completed_at = '%s' WHERE id = '%s'",
             $taskData['user_id'],
@@ -192,5 +195,45 @@ class QueryBuilder
        
         $stmt = $this->connection->prepare($sql);
         $stmt->execute();
+    }
+
+    public function createNote ($noteData) {
+        $stmt = $this->connection->prepare("INSERT INTO notes
+            (user_id, task_id, text) 
+            VALUES 
+            ({$noteData['user_id']}, {$noteData['task_id']}, '{$noteData['text']}')");
+
+        $stmt->execute($noteData);
+    }
+
+    public function getNote($noteId)
+    {
+        $query = "SELECT * FROM notes where notes.id = {$noteId}";
+        return $this->connection->query($query)->fetchAll(PDO::FETCH_CLASS, 'App\Note');
+    }
+
+    public function updateNote($noteData)
+    {
+        $sql = sprintf(
+            "UPDATE notes SET text = '%s' WHERE id = '%s'",
+            $noteData['text'],
+            $noteData['id'],
+        );
+
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute();
+    }
+
+    public function deleteNote($noteId)
+    {
+        $sql = sprintf(
+            "DELETE FROM notes WHERE notes.id = '%s'",
+            $noteId);
+        return $this->connection->query($sql);
+    }
+
+    public function getNotesByTask($taskId) {
+        $query = "SELECT * FROM notes WHERE notes.task_id = $taskId";
+        return $this->connection->query($query)->fetchAll(PDO::FETCH_CLASS, 'App\Note');
     }
 }

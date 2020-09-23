@@ -13,7 +13,7 @@ class Connection
     protected $dbserver = 'localhost';
     protected $user = 'root';
     protected $password = '';
-    protected $dbname = 'practice1.2';
+    protected $dbname = 'todotasklist';
 
     protected $dbConnection;
 

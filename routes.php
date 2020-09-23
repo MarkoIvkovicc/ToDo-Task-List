@@ -14,6 +14,11 @@ if (isset($_SESSION)) {
 	$router->get('registerForm', 'app/Auth/registerForm.php');
 	$router->post('register', 'app/Auth/register.php');
 	$router->get('pending', 'app/Auth/pending.php');
+
+	$router->post('createNoteBack', 'app/Developer/CreateNote.php');
+	$router->get('updateNote', 'app/Developer/UpdateNoteForm.php');
+	$router->post('updateNoteBack', 'app/Developer/UpdateNote.php');
+	$router->post('deleteNote', 'app/Developer/DeleteNote.php');
 }
 
 $router->get('logout', 'app/Auth/logout.php');

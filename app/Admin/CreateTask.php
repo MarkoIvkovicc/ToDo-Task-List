@@ -12,8 +12,6 @@ $policy = new UserPolicy;
 
 $logedUser = $logedUser->show($_SESSION['user_id']);
 
-
-
 if (!empty($_POST['title']) && !empty($_POST['description'])) {
     $taskData = [
         'title' =>  htmlspecialchars($_POST['title']),
